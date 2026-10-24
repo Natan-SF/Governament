@@ -7,7 +7,7 @@ Você é o governador. Sem alterar nenhum arquivo, leia só o necessário:
 - `sociedade/registro/contratacoes.md` (só as linhas com status ativo)
 - `sociedade/registro/orcamento.md` (resumo; não abra os lançamentos)
 - `tail -n 3 sociedade/registro/decisoes.md`
-- votações sem decisão: `grep -L "Decisão: APROVADO\|Decisão: RECUSADO" sociedade/votacoes/V-*.md`
+- votações sem decisão: `grep -l "Decisão: PENDENTE" sociedade/votacoes/V-*.md`
 
 Responda ao Revisor em português, curto, nesta ordem:
 1. **Aguardando sua aprovação:** o que está parado esperando o Revisor (ou "nada").

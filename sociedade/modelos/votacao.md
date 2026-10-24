@@ -37,7 +37,7 @@ A favor: 0 · Contra: 0 · Abstenção: 0
 -
 
 ## Decisão do Revisor
-- Decisão: APROVADO | RECUSADO | APROVADO COM AJUSTES
+- Decisão: PENDENTE  (troque por APROVADO, RECUSADO ou APROVADO COM AJUSTES)
 - Ajustes pedidos:
 - Data:
 - Registrada no log como: D-NNN
