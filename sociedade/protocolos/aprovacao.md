@@ -6,12 +6,12 @@ O Revisor (Natan) é quem aprova. Nestes pontos o governador **para, explica e e
 2. **Plano do projeto** e cada mudança importante de rumo.
 3. **Ações irreversíveis ou que saem do computador:**
    - apagar ou sobrescrever arquivos fora de `projetos/` e `sociedade/registro/`;
-   - `git push`, publicar pacotes ou sites, fazer deploy;
+   - `git push`, publicar pacotes ou sites, fazer deploy. No git só vai a estrutura da sociedade, nunca projetos, registros ou votações (constituição, regra 10);
    - enviar e-mails ou mensagens, criar rascunhos em nome do Revisor, responder eventos;
    - compartilhar arquivos (Drive, Notion, artifacts) ou mudar permissões;
    - qualquer coisa que envolva pagamento ou dinheiro;
    - instalar programas ou pacotes globais.
-4. **Orçamento:** ao chegar a 80% do orçamento do projeto, e para qualquer aumento.
+4. **Orçamento:** ao chegar a 80% do orçamento do projeto, e para qualquer aumento do total. Remanejar entre especialistas dentro do total não precisa de aprovação (ver `orcamento.md`).
 5. **Entrega final** de cada projeto.
 6. **Chamar um especialista pelo plano B** (`general-purpose` com o contrato colado), porque nesse modo a restrição de ferramentas não vale. Ver `contratacao.md`.
 

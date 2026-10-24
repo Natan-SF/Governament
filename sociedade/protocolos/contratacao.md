@@ -1,44 +1,48 @@
 # Protocolo de contratação
 
-Especialistas são contratados por projeto, para tarefas definidas. O governador recomenda e o Revisor aprova.
+O governador recomenda e o Revisor aprova. Um especialista é contratado para um **cargo** (dev web, design, dados...) e pode servir a vários projetos.
 
 ## 1. Recomendar
 
 Ao receber uma ordem, o governador apresenta ao Revisor uma **proposta de contratação** com uma linha por especialista:
 
-| Nome | Função | Por que é necessário | Ferramentas | Modelo | maxTurns | Orçamento (tokens) |
-|---|---|---|---|---|---|---|
+| Nome | Função | Por que é necessário | Ferramentas | Modelo | Orçamento previsto (tokens) |
+|---|---|---|---|---|---|
 
 Regras para a proposta:
-- **Contrate o mínimo.** Não crie um especialista para uma tarefa que o governador resolve sozinho com facilidade.
-- **Escolha o modelo pelo trabalho:** `haiku` para tarefas simples e repetitivas, `sonnet` para a maior parte do trabalho, `opus` só para raciocínio difícil. Modelo mais forte custa mais.
-- **Ferramentas mínimas.** Só o que a função precisa (ver abaixo).
-- Se já existe um especialista ativo que serve, proponha reaproveitá-lo em vez de contratar outro.
+- **Reaproveite primeiro.** Se um especialista ativo já cobre o cargo, use-o no projeto novo: basta escrever as regras do projeto na memória do projeto. Não precisa mexer no contrato.
+- **Contrate o mínimo.** Não crie um especialista para o que o governador resolve sozinho.
+- **Modelo pelo trabalho:** `haiku` para tarefas simples e repetitivas, `sonnet` para a maior parte, `opus` só para raciocínio difícil (crítica, segurança, direção de arte).
+- **Ferramentas mínimas** (ver abaixo).
 
 ## 2. Ferramentas
 
 - O campo `tools:` é **obrigatório** e nunca pode ficar em branco: um agente sem essa linha herda todas as ferramentas, inclusive as de enviar e-mail, compartilhar arquivos e pagamentos.
-- Ferramentas só de leitura: `Read, Grep, Glob`.
-- Para escrever arquivos: acrescente `Write, Edit`.
-- Para rodar comandos: `Bash` ou `PowerShell`. Justifique na proposta.
-- Web: `WebSearch, WebFetch`.
-- Ferramentas MCP (Gmail, Drive, Notion, navegador etc.) só pelo nome exato e com justificativa. Ações que saem do computador (enviar, compartilhar, publicar, pagar) continuam exigindo aprovação, mesmo que o agente tenha a ferramenta. Ver `aprovacao.md`.
+- Só leitura: `Read, Grep, Glob`. Escrever: `+ Write, Edit`. Terminal: `Bash` ou `PowerShell`, com justificativa. Web: `WebSearch, WebFetch`.
+- Ferramentas MCP (Gmail, Drive, Notion, navegador etc.) só pelo nome exato e com justificativa. Ações que saem do computador continuam exigindo aprovação (`aprovacao.md`).
 
-## 3. Formalizar (só depois do "aprovado")
+## 3. Contrato: genérico por cargo
 
-1. Copie `sociedade/modelos/contrato-especialista.md` para `.claude/agents/<nome>.md` e preencha todos os campos. Nome em kebab-case, sem acento (ex.: `pesquisador-mercado`).
-2. Adicione uma linha em `sociedade/registro/contratacoes.md`.
-3. Registre a decisão em `sociedade/registro/decisoes.md` (decidido por: Revisor, a partir da recomendação do governador).
-4. Adicione o orçamento do especialista em `sociedade/registro/orcamento.md`.
+O contrato é o prompt de sistema do especialista e é reenviado a cada ação dele, então fica **curto e sem nada de projeto**:
+- Contém: função, regras do cargo, critério de pronto.
+- **Não contém:** regras, caminhos, cliente, identidade visual ou orçamento de um projeto. Isso vai na seção "Regras para especialistas" de `projetos/<projeto>/memoria.md`, que o briefing manda ler.
+- `description` em uma frase sobre o cargo (ela aparece no contexto do governador em toda sessão).
 
-**Depois de contratar, peça ao Revisor para reabrir o Claude Code** antes da primeira chamada ao especialista. Um agente criado no meio da sessão pode só aparecer depois disso, e é assim que a restrição de ferramentas do contrato passa a valer.
+## 4. Formalizar (só depois do "aprovado")
 
-Plano B, **só com "aprovado" explícito do Revisor**: chamar com `subagent_type: general-purpose`, colando o contrato inteiro no início do prompt. Explique ao Revisor o risco: nesse modo o agente tem acesso a todas as ferramentas, e a lista do contrato vira só uma instrução, não um limite.
+1. Copie `sociedade/modelos/contrato-especialista.md` para `.claude/agents/<nome>.md` e preencha. Nome em kebab-case, sem acento.
+2. Acrescente uma linha em `sociedade/registro/contratacoes.md` e a decisão em `decisoes.md` (decidido por: Revisor).
+3. Lance o orçamento previsto em `sociedade/registro/orcamento.md`.
 
-## 4. Encerrar contrato
+Um contrato criado ou alterado no meio da sessão pode só valer depois de reabrir o Claude Code. Se o agente não aparecer, tente de novo depois da próxima notificação; se ainda falhar, peça ao Revisor para reabrir.
 
-Quando o projeto ou a função acabar, ou por decisão do Revisor:
+Plano B, **só com "aprovado" explícito do Revisor**: chamar com `subagent_type: general-purpose`, colando o contrato inteiro no início do prompt. Nesse modo o agente tem acesso a todas as ferramentas, e a lista do contrato vira só uma instrução.
+
+## 5. Encerrar contrato
+
+Quando o cargo não for mais necessário, ou por decisão do Revisor:
 1. Mova `.claude/agents/<nome>.md` para `sociedade/arquivo/agentes/<nome>.md`.
-2. Atualize a linha em `contratacoes.md` (status: encerrado, data, motivo).
-3. Registre em `decisoes.md`.
-4. Se o especialista aprendeu algo útil para o futuro, anote na memória do projeto ou da sociedade.
+2. Atualize a linha em `contratacoes.md` (status, data, motivo) e registre em `decisoes.md`.
+3. Se o especialista aprendeu algo útil, anote na memória do projeto ou da sociedade.
+
+Sair de um projeto não encerra o contrato: basta atualizar a linha em `contratacoes.md`.

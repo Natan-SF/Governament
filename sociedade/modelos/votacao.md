@@ -2,13 +2,25 @@
 
 - Projeto: PROJETO
 - Aberta em: AAAA-MM-DD
-- Ponto de decisão: plano | início de fase | entrega final | mudança de rumo | pedido do Revisor
+- Ponto de decisão: plano | mudança de rumo | pedido do Revisor
+- Votantes: critico + ESPECIALISTAS DA ÁREA AFETADA
 
-## Proposta
-O QUE ESTÁ SENDO DECIDIDO, EM POUCAS LINHAS.
+## Briefing (até ~40 linhas; o votante lê só isto)
 
-## Arquivos que os votantes devem ler
-- `CAMINHO`
+### Objetivo
+UMA FRASE.
+
+### Proposta
+O QUE ESTÁ SENDO DECIDIDO: fases, equipe, tecnologia, prazos, orçamento.
+
+### Alternativas descartadas
+- ALTERNATIVA: por quê.
+
+### Riscos já conhecidos
+-
+
+### Para conferir (só se necessário)
+- `CAMINHO` (trecho ou função)
 
 ## Votos
 

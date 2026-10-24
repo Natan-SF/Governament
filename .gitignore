@@ -2,5 +2,16 @@
 .env
 .env.*
 
-# Configurações pessoais do Claude Code (não vão para o GitHub)
+# Configurações pessoais do Claude Code
 .claude/settings.local.json
+
+# No git vai só a estrutura da sociedade (D-148).
+# Projetos, registros, votações e contratos encerrados ficam só no computador.
+projetos/*
+!projetos/.gitkeep
+sociedade/registro/*
+!sociedade/registro/.gitkeep
+sociedade/votacoes/*
+!sociedade/votacoes/.gitkeep
+sociedade/arquivo/agentes/*
+!sociedade/arquivo/agentes/.gitkeep
