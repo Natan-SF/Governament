@@ -28,12 +28,16 @@ O QUE ESTÁ SENDO DECIDIDO: fases, equipe, tecnologia, prazos, orçamento.
 - Voto: A FAVOR | CONTRA | ABSTENÇÃO
 - Justificativa:
 - Falhas ou riscos que vê:
+- O que o Revisor provavelmente não considerou:
 - O que mudaria o voto:
 
 ## Placar
 A favor: 0 · Contra: 0 · Abstenção: 0
 
 ## Falhas apontadas (resumo do governador)
+-
+
+## O que o Revisor provavelmente não considerou (resumo do governador)
 -
 
 ## Decisão do Revisor

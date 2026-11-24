@@ -15,3 +15,7 @@ sociedade/votacoes/*
 !sociedade/votacoes/.gitkeep
 sociedade/arquivo/agentes/*
 !sociedade/arquivo/agentes/.gitkeep
+
+# Python
+__pycache__/
+*.pyc

@@ -23,10 +23,14 @@ Sociedade de agentes de IA que executa projetos complexos. Fundada em 2026-10-20
 9. **Gaste tokens onde há qualidade a ganhar** (detalhes em `registro.md`, seção "Economia"):
    - correção pequena e localizada você faz direto; especialista só para trabalho de verdade;
    - toda delegação leva um briefing com os arquivos exatos, e tarefa grande vira etapas curtas com arquivo de andamento;
-   - revisão sempre sobre o que mudou (diff ou lista de arquivos), nunca o projeto inteiro;
+   - etapa de especialista se corta pelo tamanho do contexto, não por turnos: o sistema avisa e ele entrega PARCIAL com andamento; continue em chamada nova;
+   - revisão sempre sobre o diff do projeto (`sociedade/ferramentas/projeto_git.py`), a cada fase, nunca o projeto inteiro;
+   - consumo se mede com `sociedade/ferramentas/medidor.py`, em TE, uma vez por etapa; ao aviso de contexto do governador (500 mil), feche a etapa e proponha sessão nova;
    - registros: acrescente com o terminal (`>>`) e leia com `tail`/`grep`; nunca abra `decisoes.md` inteiro;
    - downloads, servidores e testes longos rodam em segundo plano, iniciados por você.
-10. **Git leva só a estrutura** (constituição, protocolos, modelos, comandos, contratos, memória da sociedade, README). Projetos, registros e votações nunca vão para o git; já estão no `.gitignore`.
+10. **Git leva só a estrutura** (constituição, protocolos, modelos, comandos, contratos, ferramentas, memória da sociedade, README). Projetos, registros e votações nunca vão para o git; já estão no `.gitignore`.
+11. **Pense pelo Revisor no que ele não é obrigado a saber.** Em toda ordem, levante os pontos cegos; em toda entrega final, diga as suposições feitas em nome dele e o que não foi verificado. Protocolo: `sociedade/protocolos/pontos-cegos.md`.
+12. **Falha apontada em revisão vira lição** do cargo em `sociedade/memoria/licoes/`, para não se repetir (`registro.md`, "Lições das revisões").
 
 ## Onde fica cada coisa
 
@@ -34,9 +38,10 @@ Sociedade de agentes de IA que executa projetos complexos. Fundada em 2026-10-20
 |---|---|---|
 | `.claude/agents/` | Contratos dos especialistas ativos | sim |
 | `.claude/commands/` | `/ordem`, `/status`, `/votacao` | sim |
-| `sociedade/protocolos/` | Como contratar, votar, aprovar, orçar, registrar e economizar | sim |
+| `sociedade/protocolos/` | Como contratar, votar, aprovar, orçar, registrar, economizar e levantar pontos cegos | sim |
+| `sociedade/ferramentas/` | Medidor de consumo, aviso de contexto e git local dos projetos | sim |
 | `sociedade/modelos/` | Modelos de contrato, votação, memória de projeto e registros vazios | sim |
-| `sociedade/memoria/` | Lições que valem para todos os projetos | sim |
+| `sociedade/memoria/` | Lições que valem para todos os projetos; em `licoes/`, as lições das revisões por cargo | sim |
 | `sociedade/registro/` | Quadro, log de decisões, contratações, orçamento e lançamentos | não |
 | `sociedade/votacoes/` | Uma votação por arquivo | não |
 | `sociedade/arquivo/agentes/` | Contratos encerrados | não |

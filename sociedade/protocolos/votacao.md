@@ -22,15 +22,18 @@ Não há votação no início de cada fase (o plano já foi votado) nem na entre
 2. Escreva no arquivo um **briefing autossuficiente de até ~40 linhas**: objetivo, proposta, alternativas descartadas, riscos já conhecidos e números que importam. O votante lê **só esse arquivo**; não lê memória do projeto nem código. Se um votante precisar conferir algo, cite o arquivo e o trecho exato no briefing.
 3. Chame cada votante **separadamente**, sem mostrar o voto dos outros. Em paralelo, se forem independentes. O prompt diz: votação somente leitura, leia só `<arquivo da votação>`, responda no formato abaixo, sem relatório.
 4. Anote os votos no arquivo, faça o placar e resuma as falhas.
-5. Apresente ao Revisor: placar, votos contrários com motivos e falhas apontadas. Pergunte a decisão.
-6. Registre a decisão no arquivo da votação e em `decisoes.md`, com o placar. Lance os tokens das chamadas de voto no orçamento.
+5. Apresente ao Revisor: placar, votos contrários com motivos, falhas apontadas e o que os votantes acham que ele não considerou (`pontos-cegos.md`). Pergunte a decisão.
+6. Registre a decisão no arquivo da votação e em `decisoes.md`, com o placar. O consumo dos votos entra no orçamento pelo medidor (`orcamento.md`).
 
-## Formato do voto (até ~120 palavras)
+Um voto consome cerca de 30 a 50 mil TE, menos de 1% de uma etapa de trabalho: não economize em votantes da área afetada.
+
+## Formato do voto (até ~150 palavras)
 
 ```
 Voto: A FAVOR | CONTRA | ABSTENÇÃO
 Justificativa: (2 a 3 frases)
 Falhas ou riscos que vejo: (uma linha cada; "nenhum")
+O que o Revisor provavelmente não considerou: (uma linha cada, em linguagem de leigo; "nada")
 O que mudaria meu voto: (condição concreta)
 ```
 

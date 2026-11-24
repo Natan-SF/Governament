@@ -67,7 +67,8 @@ Governament runs on [Claude Code](https://docs.claude.com/en/docs/claude-code). 
 | `.claude/agents/` | Active specialists (subagent contracts) |
 | `.claude/commands/` | Slash commands: `/ordem`, `/status`, `/votacao` |
 | `.claude/settings.json` | Project permissions (asks before `git push`, blocks reading `.env`) |
-| `sociedade/protocolos/` | How to hire, vote, approve, budget, report and save tokens |
+| `sociedade/protocolos/` | How to hire, vote, approve, budget, report, save tokens and raise blind spots |
+| `sociedade/ferramentas/` | Consumption meter, context warning hook and per-project local git |
 | `sociedade/modelos/` | Templates for agent contracts, votes, project memory and empty records |
 | `sociedade/registro/` | Task board, decision log, hiring log, budget (local only) |
 | `sociedade/votacoes/` | One file per vote (local only) |
@@ -154,15 +155,18 @@ Reply `aprovado` (approved) when you agree with the proposal, or ask for changes
 The society keeps output quality high and spends tokens only where quality is gained. This comes from **how the work is organised**, not from hard caps:
 
 - **Briefings, not exploration.** Every task sent to a specialist names the exact files to read and touch and a verifiable "done when". Specialists use search and partial reads instead of rereading the whole project.
-- **Stages, not marathons.** A specialist's whole context is resent on every action, so long calls get more expensive per step. Big tasks are split into stages of up to ~40 actions, each with a progress file the next stage reads.
-- **Reviews on the diff.** The critic and the security reviewer look at what changed, not at the whole codebase.
-- **Lean votes.** Votes happen on the plan and on real changes of course. Only the critic and the specialists whose area is affected vote, and they read a self-contained briefing of about 40 lines. At final delivery the critic's review replaces a vote.
+- **Stages cut by context, not by turns.** A specialist's whole context is resent on every action, so cost grows with the square of a call's length. A hook (`sociedade/ferramentas/aviso_contexto.py`) tells the specialist to wrap up at 100k tokens of context and to stop at 150k; it saves a progress file and the next stage starts fresh from it. The same hook warns the Reviewer when the Governor's own context passes 500k.
+- **Measured, not estimated.** `sociedade/ferramentas/medidor.py` reads the Claude Code transcripts and logs the real consumption of every call and of the Governor, in input-equivalent tokens (TE). The token total a subagent reports is only its final context size, which understates consumption by an order of magnitude or more.
+- **Reviews on a real diff.** Each project gets a local git repository (`sociedade/ferramentas/projeto_git.py`), so the critic reads one diff file per phase instead of exploring the codebase.
+- **Review findings become lessons.** Each failure the critic reports is distilled into a one-line lesson for that role (`sociedade/memoria/licoes/`), which the specialist reads before every task.
+- **Blind spots first.** On every order, a specialist lists what the Reviewer did not ask for but needs to decide or know, and every final delivery states the assumptions made on the Reviewer's behalf (`sociedade/protocolos/pontos-cegos.md`). Votes and blind-spot checks are the cheapest calls in the system, so they are never skimped.
+- **Focused votes.** Votes happen on the plan and on real changes of course. The critic and the specialists whose area is affected vote, and they read a self-contained briefing of about 40 lines. At final delivery the critic's review replaces a vote.
 - **Short deliveries.** Specialists answer in about 200 words and put long reports in files, so the Governor's context stays small.
 - **Cheap bookkeeping.** Records are appended from the shell and read with `tail`/`grep`. The budget is split into a short summary and an append-only ledger. The task board only shows live tasks.
 - **Generic contracts.** Contracts describe a role and are reused across projects. Project rules live in each project's memory file.
-- **The Governor fixes small things itself** instead of calling a specialist who would reread the code.
+- **The Governor fixes only small things itself** (about five actions). Anything bigger goes to a specialist, whose context starts several times smaller than the Governor's.
 
-Details: `sociedade/protocolos/registro.md` (section "Economia"), `votacao.md` and `orcamento.md`.
+Details: `sociedade/protocolos/registro.md` (section "Economia"), `votacao.md`, `orcamento.md` and `pontos-cegos.md`. The tools need Python 3 and git on the PATH.
 
 ## What goes into git
 

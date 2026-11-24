@@ -23,6 +23,8 @@ O governador pode, sem pedir: ler arquivos, planejar, chamar especialistas já c
 - pede confirmação para `git push` **quando rodado pela ferramenta Bash**. Pelo PowerShell não há bloqueio automático; vale a regra acima;
 - bloqueia a leitura de `.env` **pela ferramenta Read**. Um comando de terminal ainda conseguiria ler; por isso especialistas só ganham terminal com justificativa.
 
+- roda `sociedade/ferramentas/aviso_contexto.py` depois de cada ferramenta e a cada mensagem do Revisor (hooks `PostToolUse` e `UserPromptSubmit`): avisa o Revisor quando o contexto do governador passa de 500 mil tokens e manda o especialista fechar a etapa aos 100 mil e parar aos 150 mil. Os limites ficam no início do script. O hook só avisa; não bloqueia nada.
+
 Fora isso, a proteção vem destas regras e da lista de ferramentas de cada contrato.
 
 ## Como registrar uma aprovação

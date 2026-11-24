@@ -1,6 +1,6 @@
-# Lançamentos de tokens
+# Lançamentos de consumo
 
-Uma linha por chamada de especialista (tarefa ou voto) e uma estimativa do governador por etapa. Só se acrescenta, pelo terminal. Use para dimensionar orçamentos pelo gasto real de tarefas parecidas.
+Uma linha por chamada de especialista (tarefa ou voto) e uma por sessão do governador, em TE. Quem acrescenta as linhas é o medidor: `python sociedade/ferramentas/medidor.py lancar` (protocolo: `sociedade/protocolos/orcamento.md`). Use para dimensionar orçamentos pelo consumo medido de tarefas parecidas.
 
-| Data | Projeto | Quem | Tarefa ou votação (com nº de ações) | Tokens | Exato ou estimado |
+| Data | Projeto | Quem | Tarefa ou votação | Tokens (TE) | Exato ou estimado |
 |---|---|---|---|---|---|
